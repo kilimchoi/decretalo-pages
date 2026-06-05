@@ -1,0 +1,38 @@
+# Decrétalo GitHub Pages
+
+Sitio estático para GitHub Pages de una app móvil que crea audios personalizados de manifestación.
+
+## Páginas
+
+Después de publicar este repositorio con GitHub Pages, usa estas URL en App Store / Google Play:
+
+- Política de privacidad: `https://<github-username>.github.io/<repository-name>/privacy/`
+- Términos de uso: `https://<github-username>.github.io/<repository-name>/terms/`
+- URL de soporte: `https://<github-username>.github.io/<repository-name>/support/`
+
+Si el repositorio se publica como `<github-username>.github.io`, omite el segmento del repositorio:
+
+- `https://<github-username>.github.io/privacy/`
+- `https://<github-username>.github.io/terms/`
+- `https://<github-username>.github.io/support/`
+
+## Personalizar antes de publicar
+
+Reemplaza estos valores en los archivos HTML:
+
+- `Decrétalo` por el nombre final de la app si vuelve a cambiar.
+- `Equipo de Decrétalo` por el nombre del desarrollador o la empresa.
+- `decretalo26@gmail.com` es el correo configurado para soporte.
+- `decretalo26@gmail.com` también es el correo configurado para solicitudes de privacidad.
+- La cláusula de ley aplicable de California si corresponde otra jurisdicción.
+- Cualquier lenguaje sobre recopilación de datos que no coincida con la implementación final de la app.
+
+Estas páginas son un buen punto de partida, pero no constituyen asesoría legal. Pide a un abogado que revise las políticas antes de enviar la app.
+
+## Publicar con GitHub Pages
+
+1. Sube esta carpeta a un repositorio de GitHub.
+2. En GitHub, abre Settings > Pages.
+3. Configura la fuente como `Deploy from a branch`.
+4. Selecciona la rama y la carpeta raíz.
+5. Guarda los cambios y espera a que GitHub proporcione la URL pública.
