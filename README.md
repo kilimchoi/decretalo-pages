@@ -6,15 +6,15 @@ Sitio estático para GitHub Pages de una app móvil que crea audios personalizad
 
 Después de publicar este repositorio con GitHub Pages, usa estas URL en App Store / Google Play:
 
-- Política de privacidad: `https://<github-username>.github.io/<repository-name>/privacy/`
-- Términos de uso: `https://<github-username>.github.io/<repository-name>/terms/`
-- URL de soporte: `https://<github-username>.github.io/<repository-name>/support/`
+- Política de privacidad: `https://decretalo.app/privacy/`
+- Términos de uso: `https://decretalo.app/terms/`
+- URL de soporte: `https://decretalo.app/support/`
 
-Si el repositorio se publica como `<github-username>.github.io`, omite el segmento del repositorio:
+Mientras el DNS de `decretalo.app` termina de propagarse, las páginas también están disponibles en GitHub Pages:
 
-- `https://<github-username>.github.io/privacy/`
-- `https://<github-username>.github.io/terms/`
-- `https://<github-username>.github.io/support/`
+- `https://kilimchoi.github.io/decretalo-pages/privacy/`
+- `https://kilimchoi.github.io/decretalo-pages/terms/`
+- `https://kilimchoi.github.io/decretalo-pages/support/`
 
 ## Personalizar antes de publicar
 
