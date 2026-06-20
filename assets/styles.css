@@ -354,19 +354,31 @@ h2 {
 
 .download-button-icon {
   align-items: center;
-  background: rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   display: inline-flex;
   flex: 0 0 auto;
-  height: 4rem;
+  height: 4.4rem;
   justify-content: center;
-  width: 4rem;
+  opacity: 1;
+  width: 4.4rem;
 }
 
 .download-button-icon svg {
-  fill: currentColor;
-  height: 2.45rem;
-  width: 2.45rem;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.download-button-icon rect {
+  fill: #0a84ff;
+}
+
+.download-button-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 5.2;
 }
 
 .download-button-copy {
@@ -382,7 +394,7 @@ h2 {
   line-height: 1.15;
 }
 
-.download-button span {
+.download-button-copy > span {
   font-size: 0.95rem;
   font-weight: 700;
   opacity: 0.88;
@@ -543,13 +555,13 @@ h2 {
   }
 
   .download-button-icon {
-    height: 3.45rem;
-    width: 3.45rem;
+    height: 3.7rem;
+    width: 3.7rem;
   }
 
   .download-button-icon svg {
-    height: 2.05rem;
-    width: 2.05rem;
+    height: 100%;
+    width: 100%;
   }
 
   .download-prompt-card {
