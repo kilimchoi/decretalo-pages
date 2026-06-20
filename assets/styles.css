@@ -222,7 +222,7 @@ h2 {
 .support-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin: 0 auto;
   max-width: 1120px;
   padding: 3rem 1.25rem;
@@ -260,7 +260,8 @@ h2 {
 }
 
 .document-shell,
-.support-shell {
+.support-shell,
+.download-shell {
   margin: 0 auto;
   max-width: 920px;
   padding: 0 1.25rem 4rem;
@@ -312,6 +313,63 @@ h2 {
 
 .support-card {
   padding: 1.25rem;
+}
+
+.download-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.browser-note {
+  background: #efe9df;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 1rem;
+}
+
+.browser-note p {
+  margin: 0;
+}
+
+.download-button {
+  background: var(--teal);
+  border-radius: 8px;
+  color: #fff;
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  min-height: 7rem;
+  padding: 1.3rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.download-button strong {
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.download-button span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  opacity: 0.88;
+}
+
+.download-button:hover {
+  background: #096968;
+  transform: translateY(-1px);
+}
+
+.download-meta {
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
 }
 
 .compact-links a {
@@ -375,6 +433,14 @@ h2 {
   .support-panel {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .download-panel {
+    padding: 1.25rem;
+  }
+
+  .download-button strong {
+    font-size: 1.28rem;
   }
 
   .legal-document {

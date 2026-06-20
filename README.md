@@ -9,12 +9,14 @@ Después de publicar este repositorio con GitHub Pages, usa estas URL en App Sto
 - Política de privacidad: `https://decretalo.app/privacy/`
 - Términos de uso: `https://decretalo.app/terms/`
 - URL de soporte: `https://decretalo.app/support/`
+- Descarga iOS: `https://decretalo.app/download/`
 
 Mientras el DNS de `decretalo.app` termina de propagarse, las páginas también están disponibles en GitHub Pages:
 
 - `https://kilimchoi.github.io/decretalo-pages/privacy/`
 - `https://kilimchoi.github.io/decretalo-pages/terms/`
 - `https://kilimchoi.github.io/decretalo-pages/support/`
+- `https://kilimchoi.github.io/decretalo-pages/download/`
 
 ## Personalizar antes de publicar
 
