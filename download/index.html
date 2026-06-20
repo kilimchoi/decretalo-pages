@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=real-tiktok-menu-v2">
+    <link rel="stylesheet" href="../assets/styles.css?v=spanish-tiktok-sheet">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -67,7 +67,7 @@
             </li>
             <li>
               <span class="sheet-step-number">2</span>
-              <span>Elige <strong>Open in browser</strong>.</span>
+              <span>Elige <strong>Abrir en navegador</strong>. Si TikTok aparece en inglés, busca <strong>Open in browser</strong>.</span>
             </li>
           </ol>
 
@@ -78,7 +78,7 @@
                 <path d="M13.6 10.4a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 0 0 5.7 5.7l1.6-1.6"></path>
               </svg>
             </span>
-            <span data-copy-label>Copy App Store link</span>
+            <span data-copy-label>Copiar enlace de App Store</span>
           </button>
           <p class="copy-fallback" hidden data-copy-fallback>https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425</p>
 
@@ -169,7 +169,7 @@
           const didCopy = await copyText(appStoreUrl);
 
           if (copyLabel) {
-            copyLabel.textContent = didCopy ? "App Store link copied" : "Copy App Store link manually";
+            copyLabel.textContent = didCopy ? "Enlace de App Store copiado" : "Copia manualmente el enlace de App Store";
           }
 
           if (copyFallback) {
