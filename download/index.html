@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=download-card">
+    <link rel="stylesheet" href="../assets/styles.css?v=direct-appstore-link">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -44,7 +44,7 @@
           <h1>Decrétalo</h1>
         </div>
 
-        <a class="download-button" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425" data-download-button>
+        <a class="download-button" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425">
           <span class="download-button-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64" focusable="false">
               <rect x="4" y="4" width="56" height="56" rx="14"></rect>
@@ -58,44 +58,12 @@
           </span>
         </a>
       </section>
-
-      <div class="download-prompt" hidden data-ios-prompt role="dialog" aria-modal="true" aria-labelledby="downloadPromptTitle">
-        <div class="download-prompt-card">
-          <button class="sheet-drag" type="button" data-prompt-close aria-label="Cerrar"></button>
-          <p class="sheet-note" id="downloadPromptTitle">TikTok no permite abrir la App Store desde esta ventana. Elige una opción:</p>
-
-          <a class="sheet-row" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425" target="_blank" rel="noopener noreferrer">
-            <span class="sheet-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="m15.6 8.4-2.2 5-5 2.2 2.2-5 5-2.2Z"></path>
-                <circle cx="12" cy="12" r="1.1"></circle>
-              </svg>
-            </span>
-            <span>Abrir en navegador</span>
-          </a>
-
-          <button class="sheet-row" type="button" data-copy-link data-copy-url="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425">
-            <span class="sheet-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M10.4 13.6a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1.6 1.6"></path>
-                <path d="M13.6 10.4a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 0 0 5.7 5.7l1.6-1.6"></path>
-              </svg>
-            </span>
-            <span data-copy-label>Copiar enlace de App Store</span>
-          </button>
-          <p class="copy-fallback" hidden data-copy-fallback>https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425</p>
-
-          <p class="prompt-note">Después de abrir la página en Safari, toca de nuevo <strong>Descargar en App Store</strong>. Si copias el enlace, pégalo en Safari.</p>
-        </div>
-      </div>
     </main>
 
     <script>
       (() => {
-        const downloadButton = document.querySelector("[data-download-button]");
-        const prompt = document.querySelector("[data-ios-prompt]");
-        if (!downloadButton || !prompt) {
+        const browserHint = document.querySelector("[data-tiktok-browser-hint]");
+        if (!browserHint) {
           return;
         }
 
@@ -105,97 +73,13 @@
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         const isTikTokWebView =
           /TikTok|BytedanceWebview|ByteLocale|Musical_ly|musically|Aweme/i.test(userAgent);
-        const isKnownInAppBrowser =
-          /Instagram|FBAN|FBAV|FB_IAB|Messenger|Line|MicroMessenger|TikTok|BytedanceWebview|Twitter|Snapchat|Pinterest|LinkedInApp|Threads/i.test(userAgent);
-        const forceTikTokSheet = new URLSearchParams(window.location.search).has("tiktok");
-        const isIOSWebView = forceTikTokSheet || (isIOS && (isKnownInAppBrowser || !/Safari/i.test(userAgent)));
-        const shouldShowTikTokInstructions = forceTikTokSheet || (isIOS && isTikTokWebView);
+        const forceTikTokInstructions = new URLSearchParams(window.location.search).has("tiktok");
+        const shouldShowTikTokInstructions = forceTikTokInstructions || (isIOS && isTikTokWebView);
 
-        if (!isIOSWebView) {
-          return;
-        }
-
-        const closeButtons = prompt.querySelectorAll("[data-prompt-close]");
-        const copyButton = prompt.querySelector("[data-copy-link]");
-        const copyLabel = prompt.querySelector("[data-copy-label]");
-        const copyFallback = prompt.querySelector("[data-copy-fallback]");
-        const browserHint = document.querySelector("[data-tiktok-browser-hint]");
-        const previousFocus = { element: null };
-
-        if (browserHint && shouldShowTikTokInstructions) {
+        if (shouldShowTikTokInstructions) {
           document.body.classList.add("tiktok-webview-mode");
           browserHint.hidden = false;
         }
-
-        const copyText = async text => {
-          try {
-            await navigator.clipboard.writeText(text);
-            return true;
-          } catch {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.setAttribute("readonly", "");
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            document.body.append(textArea);
-            textArea.select();
-
-            try {
-              return document.execCommand("copy");
-            } catch {
-              return false;
-            } finally {
-              textArea.remove();
-            }
-          }
-        };
-
-        const openPrompt = () => {
-          previousFocus.element = document.activeElement;
-          prompt.hidden = false;
-          document.body.classList.add("prompt-open");
-          copyButton?.focus();
-        };
-
-        const closePrompt = () => {
-          prompt.hidden = true;
-          document.body.classList.remove("prompt-open");
-          previousFocus.element?.focus();
-        };
-
-        downloadButton.addEventListener("click", event => {
-          event.preventDefault();
-          openPrompt();
-        });
-
-        closeButtons.forEach(button => {
-          button.addEventListener("click", closePrompt);
-        });
-
-        copyButton?.addEventListener("click", async () => {
-          const copyUrl = copyButton.getAttribute("data-copy-url") || "https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425";
-          const didCopy = await copyText(copyUrl);
-
-          if (copyLabel) {
-            copyLabel.textContent = didCopy ? "Enlace de App Store copiado" : "Copia manualmente el enlace de App Store";
-          }
-
-          if (copyFallback) {
-            copyFallback.hidden = didCopy;
-          }
-        });
-
-        prompt.addEventListener("click", event => {
-          if (event.target === prompt) {
-            closePrompt();
-          }
-        });
-
-        document.addEventListener("keydown", event => {
-          if (event.key === "Escape" && !prompt.hidden) {
-            closePrompt();
-          }
-        });
       })();
     </script>
   </body>
