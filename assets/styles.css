@@ -274,20 +274,54 @@ h2 {
   max-width: none;
   min-height: calc(100vh - 4.5rem);
   min-height: calc(100svh - 4.5rem);
-  padding: 1.25rem;
+  padding: 2.5rem 1.25rem 4rem;
   place-items: center;
 }
 
 .minimal-download-shell .download-panel {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  padding: 0;
-  width: min(100%, 42rem);
+  width: min(100%, 34rem);
 }
 
 .minimal-download-shell .download-button {
   justify-content: center;
+}
+
+.download-card {
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.download-card-brand {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.download-card-logo {
+  background: #050505;
+  border: 1px solid rgba(32, 35, 39, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(32, 35, 39, 0.18);
+  height: 5.5rem;
+  object-fit: cover;
+  padding: 0.12rem;
+  width: 5.5rem;
+}
+
+.download-card-brand p {
+  color: var(--coral);
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin: 0.5rem 0 0;
+  text-transform: uppercase;
+}
+
+.download-card-brand h1 {
+  font-size: clamp(2.4rem, 8vw, 3.5rem);
+  line-height: 1;
+  margin: 0;
 }
 
 .document-hero {
