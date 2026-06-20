@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=copy-appstore-link">
+    <link rel="stylesheet" href="../assets/styles.css?v=real-tiktok-menu-v2">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -58,18 +58,18 @@
       <div class="download-prompt" hidden data-ios-prompt role="dialog" aria-modal="true" aria-labelledby="downloadPromptTitle">
         <div class="download-prompt-card">
           <button class="sheet-drag" type="button" data-prompt-close aria-label="Cerrar"></button>
-          <p class="sheet-note" id="downloadPromptTitle">TikTok no permite abrir la App Store desde esta ventana. Toca el menú real de TikTok arriba y elige:</p>
+          <p class="sheet-note" id="downloadPromptTitle">TikTok no permite abrir la App Store desde esta ventana. Para salir de TikTok:</p>
 
-          <div class="sheet-row sheet-row-featured" aria-label="Open in browser">
-            <span class="sheet-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="m15.6 8.4-2.2 5-5 2.2 2.2-5 5-2.2Z"></path>
-                <circle cx="12" cy="12" r="1.1"></circle>
-              </svg>
-            </span>
-            <span>Open in browser</span>
-          </div>
+          <ol class="sheet-steps">
+            <li>
+              <span class="sheet-step-number">1</span>
+              <span>Toca el menú real de TikTok <strong>•••</strong> arriba a la derecha.</span>
+            </li>
+            <li>
+              <span class="sheet-step-number">2</span>
+              <span>Elige <strong>Open in browser</strong>.</span>
+            </li>
+          </ol>
 
           <button class="sheet-row" type="button" data-copy-link>
             <span class="sheet-icon" aria-hidden="true">
@@ -80,6 +80,7 @@
             </span>
             <span data-copy-label>Copy App Store link</span>
           </button>
+          <p class="copy-fallback" hidden data-copy-fallback>https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425</p>
 
           <p class="prompt-note">Después de abrir la página en Safari, toca de nuevo <strong>Descargar en App Store</strong>. Si copias el enlace, pégalo en Safari.</p>
         </div>
@@ -116,7 +117,31 @@
         const closeButtons = prompt.querySelectorAll("[data-prompt-close]");
         const copyButton = prompt.querySelector("[data-copy-link]");
         const copyLabel = prompt.querySelector("[data-copy-label]");
+        const copyFallback = prompt.querySelector("[data-copy-fallback]");
         const previousFocus = { element: null };
+
+        const copyText = async text => {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.setAttribute("readonly", "");
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.append(textArea);
+            textArea.select();
+
+            try {
+              return document.execCommand("copy");
+            } catch {
+              return false;
+            } finally {
+              textArea.remove();
+            }
+          }
+        };
 
         const openPrompt = () => {
           previousFocus.element = document.activeElement;
@@ -141,15 +166,14 @@
         });
 
         copyButton?.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(appStoreUrl);
-            if (copyLabel) {
-              copyLabel.textContent = "App Store link copied";
-            }
-          } catch {
-            if (copyLabel) {
-              copyLabel.textContent = "Copy App Store link manually";
-            }
+          const didCopy = await copyText(appStoreUrl);
+
+          if (copyLabel) {
+            copyLabel.textContent = didCopy ? "App Store link copied" : "Copy App Store link manually";
+          }
+
+          if (copyFallback) {
+            copyFallback.hidden = didCopy;
           }
         });
 
