@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=true-bottom-sheet">
+    <link rel="stylesheet" href="../assets/styles.css?v=copy-appstore-link">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -78,10 +78,10 @@
                 <path d="M13.6 10.4a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 0 0 5.7 5.7l1.6-1.6"></path>
               </svg>
             </span>
-            <span data-copy-label>Copy link</span>
+            <span data-copy-label>Copy App Store link</span>
           </button>
 
-          <p class="prompt-note">Después de abrir la página en Safari, toca de nuevo <strong>Descargar en App Store</strong>.</p>
+          <p class="prompt-note">Después de abrir la página en Safari, toca de nuevo <strong>Descargar en App Store</strong>. Si copias el enlace, pégalo en Safari.</p>
         </div>
       </div>
     </main>
@@ -94,6 +94,7 @@
       (() => {
         const downloadButton = document.querySelector("[data-download-button]");
         const prompt = document.querySelector("[data-ios-prompt]");
+        const appStoreUrl = "https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425";
 
         if (!downloadButton || !prompt) {
           return;
@@ -141,13 +142,13 @@
 
         copyButton?.addEventListener("click", async () => {
           try {
-            await navigator.clipboard.writeText(window.location.href);
+            await navigator.clipboard.writeText(appStoreUrl);
             if (copyLabel) {
-              copyLabel.textContent = "Link copied";
+              copyLabel.textContent = "App Store link copied";
             }
           } catch {
             if (copyLabel) {
-              copyLabel.textContent = "Copy this URL in Safari";
+              copyLabel.textContent = "Copy App Store link manually";
             }
           }
         });
