@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=spanish-tiktok-sheet">
+    <link rel="stylesheet" href="../assets/styles.css?v=copy-exact-appstore-url">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -71,7 +71,7 @@
             </li>
           </ol>
 
-          <button class="sheet-row" type="button" data-copy-link>
+          <button class="sheet-row" type="button" data-copy-link data-copy-url="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425">
             <span class="sheet-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M10.4 13.6a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1.6 1.6"></path>
@@ -95,8 +95,6 @@
       (() => {
         const downloadButton = document.querySelector("[data-download-button]");
         const prompt = document.querySelector("[data-ios-prompt]");
-        const appStoreUrl = "https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425";
-
         if (!downloadButton || !prompt) {
           return;
         }
@@ -166,7 +164,8 @@
         });
 
         copyButton?.addEventListener("click", async () => {
-          const didCopy = await copyText(appStoreUrl);
+          const copyUrl = copyButton.getAttribute("data-copy-url") || "https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425";
+          const didCopy = await copyText(copyUrl);
 
           if (copyLabel) {
             copyLabel.textContent = didCopy ? "Enlace de App Store copiado" : "Copia manualmente el enlace de App Store";
