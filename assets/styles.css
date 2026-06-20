@@ -420,43 +420,96 @@ h2 {
 }
 
 .download-prompt {
-  align-items: center;
+  align-items: end;
   background: rgba(19, 23, 25, 0.62);
   display: grid;
   inset: 0;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 0;
   position: fixed;
   z-index: 30;
 }
 
 .download-prompt-card {
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  border: 1px solid rgba(227, 222, 214, 0.72);
+  border-bottom: 0;
+  border-radius: 32px 32px 0 0;
   box-shadow: var(--shadow);
   margin: 0 auto;
-  max-width: 31rem;
-  padding: 1.5rem;
+  max-width: 34rem;
+  padding: 1rem 1.5rem 1.75rem;
   position: relative;
-  width: min(100%, 31rem);
+  width: min(100%, 34rem);
 }
 
-.download-prompt-card .eyebrow {
-  color: var(--coral);
-}
-
-.prompt-close {
-  background: #efe9df;
+.sheet-drag {
+  background: #d8d6d0;
   border: 0;
-  border-radius: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: block;
+  height: 0.32rem;
+  margin: 0 auto 1.25rem;
+  width: 3.5rem;
+}
+
+.sheet-note {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.sheet-row {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
   color: var(--ink);
   cursor: pointer;
+  display: flex;
   font: inherit;
+  font-size: 1.35rem;
   font-weight: 800;
-  padding: 0.5rem 0.7rem;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
+  gap: 1rem;
+  min-height: 5.25rem;
+  padding: 1rem 0;
+  text-align: left;
+  width: 100%;
+}
+
+.sheet-row-featured {
+  cursor: default;
+}
+
+.sheet-icon {
+  align-items: center;
+  color: #050505;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 2.35rem;
+  justify-content: center;
+  width: 2.35rem;
+}
+
+.sheet-icon svg {
+  fill: none;
+  height: 100%;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+  width: 100%;
+}
+
+.sheet-icon circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.sheet-row:focus-visible,
+.sheet-drag:focus-visible {
+  outline: 3px solid rgba(14, 124, 123, 0.35);
+  outline-offset: 3px;
 }
 
 .prompt-command {
@@ -470,6 +523,7 @@ h2 {
 
 .prompt-note {
   color: var(--muted);
+  margin: 1.25rem 0 0;
 }
 
 .prompt-actions {
@@ -565,12 +619,18 @@ h2 {
   }
 
   .download-prompt-card {
-    padding: 1.25rem;
+    border-radius: 28px 28px 0 0;
+    padding: 0.9rem 1.25rem 1.5rem;
   }
 
-  .prompt-close {
-    position: static;
-    margin-bottom: 1rem;
+  .sheet-row {
+    font-size: 1.18rem;
+    min-height: 4.7rem;
+  }
+
+  .sheet-icon {
+    height: 2rem;
+    width: 2rem;
   }
 
   .legal-document {
