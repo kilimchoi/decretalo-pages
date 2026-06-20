@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=direct-sheet-actions">
+    <link rel="stylesheet" href="../assets/styles.css?v=tiktok-instructions">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -24,6 +24,17 @@
         </div>
       </nav>
     </header>
+
+    <aside class="tiktok-browser-hint" hidden data-tiktok-browser-hint aria-live="polite">
+      <svg class="tiktok-hint-arrow" viewBox="0 0 92 78" aria-hidden="true" focusable="false">
+        <path d="M9 68C26 39 49 18 82 10"></path>
+        <path d="M67 7 83 9 80 25"></path>
+      </svg>
+      <ol>
+        <li>Toca los 3 puntos</li>
+        <li>Selecciona <strong>Abrir en navegador</strong></li>
+      </ol>
+    </aside>
 
     <main id="main" class="download-shell">
       <section class="document-hero">
@@ -103,10 +114,13 @@
         const isIOS =
           /iPad|iPhone|iPod/.test(userAgent) ||
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        const isTikTokWebView =
+          /TikTok|BytedanceWebview|ByteLocale|Musical_ly|musically|Aweme/i.test(userAgent);
         const isKnownInAppBrowser =
           /Instagram|FBAN|FBAV|FB_IAB|Messenger|Line|MicroMessenger|TikTok|BytedanceWebview|Twitter|Snapchat|Pinterest|LinkedInApp|Threads/i.test(userAgent);
         const forceTikTokSheet = new URLSearchParams(window.location.search).has("tiktok");
         const isIOSWebView = forceTikTokSheet || (isIOS && (isKnownInAppBrowser || !/Safari/i.test(userAgent)));
+        const shouldShowTikTokInstructions = forceTikTokSheet || (isIOS && isTikTokWebView);
 
         if (!isIOSWebView) {
           return;
@@ -116,7 +130,13 @@
         const copyButton = prompt.querySelector("[data-copy-link]");
         const copyLabel = prompt.querySelector("[data-copy-label]");
         const copyFallback = prompt.querySelector("[data-copy-fallback]");
+        const browserHint = document.querySelector("[data-tiktok-browser-hint]");
         const previousFocus = { element: null };
+
+        if (browserHint && shouldShowTikTokInstructions) {
+          document.body.classList.add("tiktok-webview-mode");
+          browserHint.hidden = false;
+        }
 
         const copyText = async text => {
           try {
