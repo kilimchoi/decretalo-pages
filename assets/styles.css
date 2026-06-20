@@ -338,16 +338,41 @@ h2 {
 }
 
 .download-button {
+  align-items: center;
   background: var(--teal);
   border-radius: 8px;
   color: #fff;
-  display: grid;
-  gap: 0.25rem;
-  justify-items: center;
+  display: flex;
+  gap: 1rem;
   min-height: 7rem;
   padding: 1.3rem;
   text-align: center;
   text-decoration: none;
+}
+
+.download-button-icon {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 4rem;
+  justify-content: center;
+  width: 4rem;
+}
+
+.download-button-icon svg {
+  fill: currentColor;
+  height: 2.45rem;
+  width: 2.45rem;
+}
+
+.download-button-copy {
+  display: grid;
+  flex: 1;
+  gap: 0.25rem;
+  justify-items: start;
+  text-align: left;
 }
 
 .download-button strong {
@@ -441,6 +466,16 @@ h2 {
 
   .download-button strong {
     font-size: 1.28rem;
+  }
+
+  .download-button-icon {
+    height: 3.45rem;
+    width: 3.45rem;
+  }
+
+  .download-button-icon svg {
+    height: 2.05rem;
+    width: 2.05rem;
   }
 
   .legal-document {
