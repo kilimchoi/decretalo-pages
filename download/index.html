@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=app-store-icon">
+    <link rel="stylesheet" href="../assets/styles.css?v=tiktok-browser-only">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -60,12 +60,11 @@
           <button class="prompt-close" type="button" data-prompt-close>Cerrar</button>
           <p class="eyebrow">iPhone</p>
           <h2 id="downloadPromptTitle">Open in browser</h2>
-          <p>Si estás dentro de TikTok y la descarga no continúa, abre esta página desde el menú de la app.</p>
+          <p>TikTok no siempre permite abrir la App Store desde esta ventana. Abre esta página en el navegador primero.</p>
           <p class="prompt-command"><strong>••• → Open in browser</strong></p>
-          <p class="prompt-note">Si tu app está en español, busca una opción como <strong>Abrir en el navegador</strong> o <strong>Abrir en Safari</strong>. Después, vuelve a tocar el botón de descarga.</p>
+          <p class="prompt-note">Si tu app está en español, busca una opción como <strong>Abrir en el navegador</strong> o <strong>Abrir en Safari</strong>. Después, toca de nuevo <strong>Descargar en App Store</strong>.</p>
           <div class="prompt-actions">
-            <a class="button primary" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425" data-prompt-continue>Continuar a App Store</a>
-            <button class="button secondary" type="button" data-prompt-close>Entendido</button>
+            <button class="button primary" type="button" data-prompt-close>Entendido</button>
           </div>
         </div>
       </div>
@@ -97,14 +96,13 @@
         }
 
         const closeButtons = prompt.querySelectorAll("[data-prompt-close]");
-        const continueLink = prompt.querySelector("[data-prompt-continue]");
         const previousFocus = { element: null };
 
         const openPrompt = () => {
           previousFocus.element = document.activeElement;
           prompt.hidden = false;
           document.body.classList.add("prompt-open");
-          continueLink?.focus();
+          prompt.querySelector("[data-prompt-close]")?.focus();
         };
 
         const closePrompt = () => {
@@ -114,16 +112,8 @@
         };
 
         downloadButton.addEventListener("click", event => {
-          if (sessionStorage.getItem("decretaloDownloadPromptSeen") === "1") {
-            return;
-          }
-
           event.preventDefault();
           openPrompt();
-        });
-
-        continueLink?.addEventListener("click", () => {
-          sessionStorage.setItem("decretaloDownloadPromptSeen", "1");
         });
 
         closeButtons.forEach(button => {
