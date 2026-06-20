@@ -6,7 +6,7 @@
     <title>Descargar app iOS | Decrétalo</title>
     <meta name="description" content="Descarga Decrétalo para iPhone desde la App Store.">
     <link rel="icon" href="../assets/decretalo-logo.png">
-    <link rel="stylesheet" href="../assets/styles.css?v=download">
+    <link rel="stylesheet" href="../assets/styles.css?v=ios-prompt">
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -34,10 +34,10 @@
 
       <section class="download-panel" aria-label="Descarga de Decrétalo">
         <div class="browser-note">
-          <p><strong>Antes de descargar:</strong> si estás viendo esta página dentro de otra app y la App Store no se abre, toca <strong>••• → Abrir en Safari</strong> o <strong>Abrir en el navegador predeterminado</strong>, y vuelve a tocar el botón.</p>
+          <p><strong>Antes de descargar:</strong> si estás viendo esta página dentro de TikTok u otra app, te mostraremos cómo abrirla en el navegador si la App Store no se abre.</p>
         </div>
 
-        <a class="download-button" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425">
+        <a class="download-button" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425" data-download-button>
           <span class="download-button-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" focusable="false">
               <path d="M16.61 13.07c-.02-2.06 1.68-3.05 1.75-3.1-.96-1.4-2.44-1.59-2.97-1.61-1.26-.13-2.46.74-3.1.74-.64 0-1.63-.72-2.68-.7-1.38.02-2.66.8-3.37 2.04-1.44 2.49-.37 6.18 1.03 8.2.68.99 1.5 2.1 2.57 2.06 1.03-.04 1.42-.67 2.67-.67 1.25 0 1.6.67 2.69.65 1.11-.02 1.82-1.01 2.5-2 .78-1.14 1.1-2.25 1.12-2.31-.02-.01-2.18-.84-2.21-3.3ZM14.56 7.03c.57-.69.95-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.86 2.53.91.07 1.85-.47 2.42-1.16Z"></path>
@@ -51,11 +51,94 @@
 
         <p class="download-meta">El enlace abre la ficha oficial de Decrétalo en la App Store de Apple.</p>
       </section>
+
+      <div class="download-prompt" hidden data-ios-prompt role="dialog" aria-modal="true" aria-labelledby="downloadPromptTitle">
+        <div class="download-prompt-card">
+          <button class="prompt-close" type="button" data-prompt-close>Cerrar</button>
+          <p class="eyebrow">iPhone</p>
+          <h2 id="downloadPromptTitle">Open in browser</h2>
+          <p>Si estás dentro de TikTok y la descarga no continúa, abre esta página desde el menú de la app.</p>
+          <p class="prompt-command"><strong>••• → Open in browser</strong></p>
+          <p class="prompt-note">Si tu app está en español, busca una opción como <strong>Abrir en el navegador</strong> o <strong>Abrir en Safari</strong>. Después, vuelve a tocar el botón de descarga.</p>
+          <div class="prompt-actions">
+            <a class="button primary" href="https://apps.apple.com/mx/app/decr%C3%A9talo/id6776760425" data-prompt-continue>Continuar a App Store</a>
+            <button class="button secondary" type="button" data-prompt-close>Entendido</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
       <p><a href="../">Inicio</a></p>
       <p><a href="../privacy/">Privacidad</a> | <a href="../terms/">Términos</a> | <a href="../support/">Soporte</a></p>
     </footer>
+    <script>
+      (() => {
+        const downloadButton = document.querySelector("[data-download-button]");
+        const prompt = document.querySelector("[data-ios-prompt]");
+
+        if (!downloadButton || !prompt) {
+          return;
+        }
+
+        const userAgent = navigator.userAgent || "";
+        const isIOS =
+          /iPad|iPhone|iPod/.test(userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        const isKnownInAppBrowser =
+          /Instagram|FBAN|FBAV|FB_IAB|Messenger|Line|MicroMessenger|TikTok|BytedanceWebview|Twitter|Snapchat|Pinterest|LinkedInApp|Threads/i.test(userAgent);
+        const isIOSWebView = isIOS && (isKnownInAppBrowser || !/Safari/i.test(userAgent));
+
+        if (!isIOSWebView) {
+          return;
+        }
+
+        const closeButtons = prompt.querySelectorAll("[data-prompt-close]");
+        const continueLink = prompt.querySelector("[data-prompt-continue]");
+        const previousFocus = { element: null };
+
+        const openPrompt = () => {
+          previousFocus.element = document.activeElement;
+          prompt.hidden = false;
+          document.body.classList.add("prompt-open");
+          continueLink?.focus();
+        };
+
+        const closePrompt = () => {
+          prompt.hidden = true;
+          document.body.classList.remove("prompt-open");
+          previousFocus.element?.focus();
+        };
+
+        downloadButton.addEventListener("click", event => {
+          if (sessionStorage.getItem("decretaloDownloadPromptSeen") === "1") {
+            return;
+          }
+
+          event.preventDefault();
+          openPrompt();
+        });
+
+        continueLink?.addEventListener("click", () => {
+          sessionStorage.setItem("decretaloDownloadPromptSeen", "1");
+        });
+
+        closeButtons.forEach(button => {
+          button.addEventListener("click", closePrompt);
+        });
+
+        prompt.addEventListener("click", event => {
+          if (event.target === prompt) {
+            closePrompt();
+          }
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && !prompt.hidden) {
+            closePrompt();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
