@@ -337,6 +337,13 @@ h2 {
   max-width: 28rem;
 }
 
+.store-buttons {
+  display: grid;
+  gap: 0.8rem;
+  justify-items: center;
+  width: 100%;
+}
+
 .document-hero {
   padding: 4rem 0 2rem;
 }
@@ -464,6 +471,22 @@ h2 {
 
 .download-button-icon path {
   fill: currentColor;
+}
+
+.google-play-icon .play-blue {
+  fill: #00a0ff;
+}
+
+.google-play-icon .play-green {
+  fill: #00c853;
+}
+
+.google-play-icon .play-yellow {
+  fill: #ffb300;
+}
+
+.google-play-icon .play-red {
+  fill: #ff5252;
 }
 
 .download-button-copy {
