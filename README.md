@@ -13,10 +13,10 @@ Después de publicar este repositorio con GitHub Pages, usa estas URL en App Sto
 - Terms of Use: `https://decretalo.app/en/terms/`
 - Support URL: `https://decretalo.app/en/support/`
 - Download iOS/Android: `https://decretalo.app/download/`
-- Descarga iOS/Android: `https://decretalo.app/es/download/`
+- Descarga iOS/Android: `https://decretalo.app/descargar/`
 - Google Play: `https://play.google.com/store/apps/details?id=com.decretalo.app`
 
-The download page is English by default at `/download/`. Spanish copy is available directly at `/es/download/`; no country or IP detection is used.
+The download page is English by default at `/download/`. Spanish copy is available directly at `/descargar/`; no country or IP detection is used.
 
 Mientras el DNS de `decretalo.app` termina de propagarse, las páginas también están disponibles en GitHub Pages:
 
@@ -26,7 +26,7 @@ Mientras el DNS de `decretalo.app` termina de propagarse, las páginas también 
 - `https://kilimchoi.github.io/decretalo-pages/en/privacy/`
 - `https://kilimchoi.github.io/decretalo-pages/en/terms/`
 - `https://kilimchoi.github.io/decretalo-pages/en/support/`
-- `https://kilimchoi.github.io/decretalo-pages/es/download/`
+- `https://kilimchoi.github.io/decretalo-pages/descargar/`
 - `https://kilimchoi.github.io/decretalo-pages/download/`
 
 ## Personalizar antes de publicar
