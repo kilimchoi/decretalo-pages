@@ -344,6 +344,10 @@ h2 {
   width: 100%;
 }
 
+.download-shell .language-switch {
+  display: none;
+}
+
 .document-hero {
   padding: 4rem 0 2rem;
 }
